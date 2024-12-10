@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: postgres:17
+    # shm_size: 128mb
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: abcd1234
+      POSTGRES_DB: adventofsql
+    ports:
+      - "5432:5432"
