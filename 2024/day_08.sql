@@ -63,4 +63,9 @@ select * from cte
     1st round - get staff with manager id = 1
     2nd round - get staff with manager id in cte (which is 1)
     3rd round - get staff with manager id in cte (which is 1 + 2nd round's staff id)
+
+
+    array operator
+    - https://www.postgresql.org/docs/current/functions-array.html
+    - || concat arrays
 */
