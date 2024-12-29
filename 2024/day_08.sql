@@ -49,7 +49,7 @@ with recursive cte as (
     where staff.staff_id <= (select max(staff_id) from staff)
 )
 select * from cte
- order by level desc;
+order by level desc;
 
 /*
     docs: https://www.postgresql.org/docs/current/queries-with.html#QUERIES-WITH-RECURSIVE
