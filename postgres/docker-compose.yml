@@ -1,6 +1,7 @@
 services:
   postgres:
-    image: postgres:17
+    # image: postgres:17
+    image: postgis/postgis:17-3.5
     # shm_size: 128mb
     environment:
       POSTGRES_USER: user
