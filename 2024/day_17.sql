@@ -14,7 +14,7 @@
 -- (2, 'London Workshop', 'Europe/London', '09:00', '17:00'),
 -- (3, 'New York Workshop', 'America/New_York', '09:00', '17:00');
 
-select * from pg_timezone_names where name = 'America/New_York';
+-- select * from pg_timezone_names where name = 'America/New_York';
 with cte as (
     select 
         workshop_name,
