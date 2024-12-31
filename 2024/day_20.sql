@@ -33,10 +33,11 @@ with cte as (
 )
 select
     *,
-    jsonb_object(parts)
+    jsonb_object(parts),
+    (select count(1) from jsonb_object_keys(jsonb_object(parts))) as keys
 from cte
 where mod(array_length(parts, 1), 2) = 0
-order by array_length(parts, 1) desc
+order by keys desc, url asc
 
 -- https://www.postgresql.org/docs/current/functions-string.html
 -- split_part

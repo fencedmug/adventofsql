@@ -16,20 +16,19 @@
 -- find growth percent current over previous quarter
 with cte as (
     select
-        sale_date,
         extract(year from sale_date) as year,
         extract(quarter from sale_date) as quarter,
-        amount,
-        lag(amount) over (order by extract(year from sale_date), extract(quarter from sale_date))
+        sum(amount) as total
     from sales
-    order by year, quarter
+    group by year, quarter
 )
 select
-    *,
-    (amount - lag) / lag as growth_rate
+    concat(year::text, ',', quarter::text),
+    total,
+    lag(total) over (order by year, quarter),
+    (total - lag(total) over (order by year, quarter)) / (lag(total) over (order by year, quarter)) as growth_rate
 from cte
 order by growth_rate desc nulls last
 
 -- extract function
 -- https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT
-
